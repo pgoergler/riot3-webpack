@@ -18,8 +18,15 @@ module.exports = {
   ],
   module: {
     loaders: [
-      { test: /\.tag\.html$/, exclude: /node_modules/, loader: 'riotjs-loader' },
-      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' }
+      { test: /\.tag\.html$/, exclude: /node_modules/, loader: 'tag-loader'},
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        query: {
+          "presets": ["es2015-riot"]
+        }
+      }
     ]
   },
   resolve: {
