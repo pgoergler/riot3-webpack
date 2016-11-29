@@ -1,0 +1,13 @@
+<test>
+  <button type="button" disabled="{true}">Should be disabled but its not</button>
+  <button type="button" disabled="{'disabled'}">Should be disabled but its not</button>
+  <button type="button" disabled="{'true'}">Should be disabled but its not</button>
+  <button type="button" disabled="disabled">Is disabled</button>
+
+  <nested></nested>
+  <span>message={message}</span>
+
+  <script>
+    this.message = 'hello world';
+  </script>
+</test>
