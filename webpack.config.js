@@ -1,3 +1,4 @@
+var webpack = require('webpack');
 var path = require('path'),
   fs = require('fs')
 
@@ -11,21 +12,14 @@ module.exports = {
     filename: '[name].js'
   },
   devtool: 'source-map',
+  plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.ProvidePlugin({ riot: 'riot' })
+  ],
   module: {
     loaders: [
-      {
-        test: /\.js?$/,
-        loader: 'babel-loader',
-        exclude: /(node_modules|bower_components)/
-      },
-      {
-        test: /\.tag\.html?$/,
-        loader: 'tag-loader',
-        exclude: /(node_modules|bower_components)/,
-        query: {
-          type: 'babel'
-        }
-      }
+      { test: /\.tag\.html$/, exclude: /node_modules/, loader: 'riotjs-loader' },
+      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' }
     ]
   },
   resolve: {
